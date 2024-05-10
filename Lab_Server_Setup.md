@@ -23,9 +23,11 @@ After the SSH extension is installed, you can use it to connect to a remote serv
 
 - Click on the green button in the bottom left corner (it should look like "><").
 - Choose "Remote-SSH: Connect to Host..." from the drop-down list.
-- Enter the SSH command for your server in the format `username@hostname` (replace "username" with your username and "hostname" with the IP address or domain of your server). In the case of YES Lab, it's psych-ads\\[username]@yeslab1.psych.ucsb.edu (could be single or double backslash)
+- Reboot your machine, make sure VS Code is in your Application folder.
+- Click Remote-SSH add on, enter the SSH command for your server in the format `username@hostname` (replace "username" with your username and "hostname" with the IP address or domain of your server). In the case of YES Lab, it's `ssh psych-ads\\[username]@yeslab1.psych.ucsb.edu` (could be single or double backslash)
 - Press Enter. If you're connecting to the server for the first time, you'll have to confirm that you trust the server.
-- Enter your password when prompted.
+- Enter your password when prompted. Check bottom left, it should show "SSH: yeslab1.psych.psych.ucsb.edu"
+- To show the folder, click "Explorer" on the left top panel, enter the password again, you should see the remote server folder.
 
 Now, you should be connected to your remote server via SSH in Visual Studio Code.
 
@@ -42,6 +44,22 @@ Now, you should be connected to your remote server via SSH in Visual Studio Code
 - Follow the github [instruction](https://docs.github.com/en/get-started/quickstart/set-up-git#setting-up-git);
 - Once you have your github setup, let lab-manager/PI knows your username so we can add you to the lab account.
 
+## Step 5: Use matlab (optional)
+1. type `matlab` to see if it has been installed.
+2. (optional) Use X11 forwarding or VNC to get GUI. 
+3. (optional) After setting up X11 forwarding, open terminal, type `ssh -X username@hostname` note the "X".
+If your mac is M chips and using X11 forwarding with XQuartz, do the following to fix the black background:
+    - create a file "java.opts" in the home folder
+    - codes inside that file:
+    ```
+    Dsun.java2d.xrender=false
+    Dsun.java2d.pmoffscreen=false
+    ```
+    - restart matlab
+4. To run the script without GUI, navigate to the directory containing the Matlab scripts and run, e.g.: 
+    ```
+    matlab -nodisplay -nosplash -r "run('kappa_estimate_aggression.m'); exit;"
+    ```
 
 ## Basic Operations
 
