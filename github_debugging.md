@@ -1,6 +1,15 @@
 
 # Github debugging
 
+## Keep asking for ssh passphrase
+SSH Agent May Not Caching the Key:
+Your SSH agent might not be caching your key, requiring you to enter the passphrase repeatedly. You can add your key to the SSH agent to avoid having to enter the passphrase every time you use the key. Here’s how you can do it:
+```bash
+eval "$(ssh-agent -s)"  # Start the ssh-agent in the background
+ssh-add ~/.ssh/id_ed25519  # Add your SSH private key to the ssh-agent
+```
+After running these commands, your SSH key should be added to the SSH agent, and you should no longer be prompted for the passphrase when using the key.
+
 ## .gitignore not working
 ### rm cache
 ```bash
@@ -89,3 +98,4 @@ git config --global pull.ff only
 ```
 
 By setting one of these configurations, future git pull commands will default to the behavior you've specified, eliminating the need to specify how to handle divergent branches each time. After pulling and resolving any conflicts (if necessary), you should be able to push your changes to the remote repository without any further issues.
+
